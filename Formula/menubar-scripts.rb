@@ -14,8 +14,8 @@ class MenubarScripts < Formula
     run [opt_bin/"menubar-scripts"]
     run_type :interval
     interval 1500 # seconds; 25 minutes
-    log_path var/"log/#{name}.log"
-    error_log_path var/"log/#{name}.log"
+    log_path var/"log/menubar-scripts.log"
+    error_log_path var/"log/menubar-scripts.log"
     working_dir HOMEBREW_PREFIX
   end
 
