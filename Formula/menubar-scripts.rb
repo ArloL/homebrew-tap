@@ -20,6 +20,6 @@ class MenubarScripts < Formula
   end
 
   test do
-    system bin/"burp", "-V"
+    system bin/"menubar-scripts"
   end
 end
