@@ -44,4 +44,8 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@master
     - name: Livecheck
       run: |
-        brew audit --cask --strict --online Casks/*
+        output=$(brew livecheck --tap arlol/tap --newer-only)
+        if [ "${output}" != "No newer upstream versions." ]; then
+          echo "${output}"
+          exit 1
+        fi
