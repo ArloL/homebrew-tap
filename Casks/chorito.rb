@@ -1,5 +1,5 @@
 cask "chorito" do
-    version "0.0.1"
+    version "0.0.233"
     sha256 :no_check
     license "MIT"
 

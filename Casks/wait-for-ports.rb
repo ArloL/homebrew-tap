@@ -1,5 +1,5 @@
 cask "wait-for-ports" do
-    version "0.0.73"
+    version "0.0.191"
     sha256 :no_check
     license "MIT"
 
