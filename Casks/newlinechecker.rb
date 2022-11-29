@@ -1,6 +1,7 @@
 cask "newlinechecker" do
     version "0.0.1"
     sha256 :no_check
+    license "MIT"
 
     url "https://github.com/ArloL/newlinechecker/releases/download/v#{version}/newlinechecker-macos-#{version}.zip"
     name "newlinechecker"
