@@ -3,6 +3,7 @@ class MenubarScripts < Formula
   homepage "https://github.com/ArloL/menubar-scripts"
   url "https://github.com/ArloL/menubar-scripts/archive/refs/tags/v0.0.4.tar.gz"
   sha256 "6939e047f86165d652a0a23e45223fe7f6a9d3d0041afa01829f042a9187ecc2"
+  revision 1
   license "MIT"
   head "https://github.com/ArloL/menubar-scripts.git", branch: "main"
 
