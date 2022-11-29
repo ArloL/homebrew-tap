@@ -11,7 +11,7 @@ class MenubarScripts < Formula
   end
 
   service do
-    run [opt_bin/"menubar-scripts"]
+    run [opt_bin/"menubar-scripts", "~/Desktop/daemon"]
     run_type :interval
     interval 1500 # seconds; 25 minutes
     log_path var/"log/menubar-scripts.log"
