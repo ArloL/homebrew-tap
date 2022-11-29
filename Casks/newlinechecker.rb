@@ -1,5 +1,5 @@
 cask "newlinechecker" do
-  version "0.0.240"
+  version "0.0.241"
   sha256 :no_check
 
   url "https://github.com/ArloL/newlinechecker/releases/download/v#{version}/newlinechecker-macos-#{version}.zip"
