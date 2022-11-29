@@ -3,7 +3,7 @@ name: Livecheck
 on:
   workflow_dispatch:
   schedule:
-  - cron: '6 8 26 * *'
+  - cron: '6 8 * * *'
 jobs:
   debug:
     runs-on: ubuntu-latest
