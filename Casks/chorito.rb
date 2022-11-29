@@ -1,5 +1,5 @@
 cask "chorito" do
-  version "0.0.233"
+  version "0.0.234"
   sha256 :no_check
 
   url "https://github.com/ArloL/chorito/releases/download/v#{version}/chorito-macos-#{version}.zip"
