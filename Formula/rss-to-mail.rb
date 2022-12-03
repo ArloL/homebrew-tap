@@ -12,7 +12,7 @@ class RssToMail < Formula
 
   def install
     ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
-    system "mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
+    system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     libexec.install "target/rss-to-mail-#{version}.jar"
     bin.write_jar_script libexec/"rss-to-mail-#{version}.jar", "rss-to-mail"
   end
