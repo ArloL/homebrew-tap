@@ -8,15 +8,16 @@ class RssToMail < Formula
 
   depends_on "maven" => :build
   depends_on :macos
-  depends_on "openjdk@17"
+  depends_on "openjdk"
 
   def install
-    system "mvnw", "--batch-mode", "clean", "package", "-DskipTests"
-    libexec.install "target/rss-to-mail-0.0.1-SNAPSHOT.jar"
-    bin.write_jar_script libexec/"rss-to-mail-0.0.1-SNAPSHOT.jar", "rss-to-mail"
+    ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
+    system "mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
+    libexec.install "target/rss-to-mail-#{version}.jar"
+    bin.write_jar_script libexec/"rss-to-mail-#{version}.jar", "rss-to-mail"
   end
 
   test do
-    system bin/"rss-to-mail", "--version"
+    assert_match version.to_s, shell_output("#{bin}/rss-to-mail --version")
   end
 end
