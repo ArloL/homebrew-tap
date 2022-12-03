@@ -7,9 +7,8 @@ class RssToMail < Formula
   head "https://github.com/ArloL/rss-to-mail.git", branch: "main"
 
   depends_on "maven" => :build
-  depends_on "openjdk@17"
-
   depends_on :macos
+  depends_on "openjdk@17"
 
   def install
     system "mvn", "--batch-mode", "clean", "package", "-DskipTests", "-Dspring-boot.executable=true"
