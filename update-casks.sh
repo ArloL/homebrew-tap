@@ -84,3 +84,4 @@ check_cask chorito
 check_cask newlinechecker
 check_cask wait-for-ports
 check_formula menubar-scripts
+check_formula rss-to-mail
