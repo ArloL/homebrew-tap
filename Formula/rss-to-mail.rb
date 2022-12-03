@@ -11,7 +11,7 @@ class RssToMail < Formula
   depends_on "openjdk@17"
 
   def install
-    system "mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Dspring-boot.executable=true"
+    system "mvnw", "--batch-mode", "clean", "package", "-DskipTests"
     libexec.install "target/rss-to-mail-0.0.1-SNAPSHOT.jar"
     bin.write_jar_script libexec/"rss-to-mail-0.0.1-SNAPSHOT.jar", "rss-to-mail"
   end
