@@ -6,8 +6,6 @@ class RssToMail < Formula
   license "MIT"
   head "https://github.com/ArloL/rss-to-mail.git", branch: "main"
 
-  depends_on "maven" => :build
-  depends_on :macos
   depends_on "openjdk"
 
   def install
