@@ -13,10 +13,5 @@ Or `brew tap arlol/tap` and then `brew install <formula>`.
 ## Updating
 
 ```
-brew livecheck --tap arlol/tap --newer-only
-# update the version where necessary
-
-# to update the checksums run
-brew fetch --cask Casks/*
-brew fetch --formula Formula/*
+sh update-tap.sh
 ```
