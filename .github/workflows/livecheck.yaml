@@ -44,8 +44,12 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@master
     - name: Livecheck
       run: |
-        output=$(brew livecheck --tap arlol/tap --newer-only)
-        if [ "${output}" != "No newer upstream versions." ]; then
-          echo "${output}"
-          exit 1
-        fi
+        sh update-tap.sh
+        git diff
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4.2.3
+      with:
+        commit-message: "update tap"
+        branch: "livecheck/patch"
+        title: "chore: automated changes by livecheck"
+        body: "Automated changes by livecheck"
