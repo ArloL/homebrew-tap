@@ -8,10 +8,10 @@ class RssToMail < Formula
 
   depends_on "maven" => :build
   depends_on :macos
-  depends_on "openjdk"
+  depends_on "graalvm/tap/graalvm-ce-java17"
 
   def install
-    ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
+    ENV["JAVA_HOME"] = "/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.0"
     system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     libexec.install "target/rss-to-mail-#{version}.jar"
     bin.write_jar_script libexec/"rss-to-mail-#{version}.jar", "rss-to-mail"
