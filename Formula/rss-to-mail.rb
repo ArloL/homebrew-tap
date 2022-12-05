@@ -20,8 +20,8 @@ class RssToMail < Formula
     run opt_bin/"rss-to-mail"
     run_type :interval
     interval 1500 # seconds; 25 minutes
-    log_path var/"log/rss-to-mail.log"
-    error_log_path var/"log/rss-to-mail.log"
+    log_path var/"rss-to-mail/rss-to-mail.log"
+    error_log_path var/"rss-to-mail/rss-to-mail.log"
     working_dir var/"rss-to-mail"
   end
 
