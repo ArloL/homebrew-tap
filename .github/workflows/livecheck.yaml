@@ -48,6 +48,8 @@ jobs:
     steps:
     - name: Set up Homebrew
       uses: Homebrew/actions/setup-homebrew@251cc053a43110ce4dea3cdb6f038147c82d0257
+      with:
+        test-bot: false
     - name: Livecheck
       run: |
         sh update-tap.sh
