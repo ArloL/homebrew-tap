@@ -3,6 +3,7 @@
 set -o errexit
 set -o nounset
 set -o xtrace
+set -o pipefail
 
 check() {
     JSON=$(brew livecheck --quiet --json --"${1}" "${2}" \
