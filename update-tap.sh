@@ -10,20 +10,20 @@ check() {
         | jq --raw-output '.[]')
     VERSION_CURRENT=$(echo "$JSON" | jq --raw-output '.version.current')
     VERSION_LATEST=$(echo "$JSON" | jq --raw-output '.version.latest')
-    sed -i "" "s/${VERSION_CURRENT}/${VERSION_LATEST}/g" "${2}"
+    sed -i "" "s/${VERSION_CURRENT}/${VERSION_LATEST}/g" "${3}"
     SHA256_CURRENT=$(brew info --json=v2 --"${1}" "${2}" \
-        | jq --raw-output "${3}")
+        | jq --raw-output "${4}")
     SHA256_LATEST=$(brew fetch --"${1}" "${2}" | grep "^SHA256:")
-    sed -i "" "s/${SHA256_CURRENT}/${SHA256_LATEST#SHA256: }/g" "${2}"
+    sed -i "" "s/${SHA256_CURRENT}/${SHA256_LATEST#SHA256: }/g" "${3}"
     brew audit --strict --online --"${1}" "${2}"
 }
 
 check_cask() {
-    check "cask" "./Casks/${1}.rb" ".casks[0].sha256"
+    check "cask" "${1}" "./Casks/${1}.rb" ".casks[0].sha256"
 }
 
 check_formula() {
-    check "formula" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
+    check "formula" "${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
 
 check_cask chorito
