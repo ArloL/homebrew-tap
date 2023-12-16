@@ -6,7 +6,7 @@ class RssToMail < Formula
   license "MIT"
   head "https://github.com/ArloL/rss-to-mail.git", branch: "main"
 
-  depends_on "openjdk@17"
+  depends_on "openjdk@21"
 
   def install
     ENV["JAVA_HOME"] = Formula["openjdk@17"].opt_prefix
