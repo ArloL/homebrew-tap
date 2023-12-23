@@ -27,6 +27,7 @@ check_formula() {
 }
 
 check_cask chorito
+check_cask git-dora-lead-time-calculator
 check_cask newlinechecker
 check_cask wait-for-ports
 check_formula menubar-scripts
