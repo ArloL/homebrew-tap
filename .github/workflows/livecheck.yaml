@@ -44,6 +44,7 @@ jobs:
     name: Livecheck
     runs-on: macos-latest
     permissions:
+      contents: write
       pull-requests: write
     env:
       HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
