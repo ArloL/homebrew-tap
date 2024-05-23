@@ -1,6 +1,6 @@
 cask "newlinechecker" do
-  version "0.0.468"
-  sha256 "c68213f24a8e27682d8457bf92d92489cdc2ef46012d0c7deeaa664553765e3d"
+  version "0.0.469"
+  sha256 "c6250fffeb8ccf382bae64aec0b52c634618e1aa701fb7a2baf0e68336e6fbf8"
 
   url "https://github.com/ArloL/newlinechecker/releases/download/v#{version}/newlinechecker-macos-#{version}.zip"
   name "newlinechecker"
