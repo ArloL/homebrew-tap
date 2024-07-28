@@ -1,6 +1,6 @@
 cask "wait-for-ports" do
-  version "0.0.425"
-  sha256 "e23c2bd8b363ad899d6c796788a0e8227644e0d47589d2827917773627ee1c41"
+  version "0.0.426"
+  sha256 "c38c2c6598866f8ad1902354aafeead43777ec6e071176c7cf20103118f29c4a"
 
   url "https://github.com/ArloL/wait-for-ports/releases/download/v#{version}/wait-for-ports-macos-#{version}.zip"
   name "wait-for-ports"
