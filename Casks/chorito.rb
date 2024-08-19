@@ -1,6 +1,6 @@
 cask "chorito" do
-  version "2408.0.108"
-  sha256 "d7b79a711de04026eb0a2c7ad91bfc131179c7620a2ee42a8916f59861771926"
+  version "2408.0.110"
+  sha256 "0618949ed967518a7849afc67309ec89c84cc7fe416628e7bcf8e2d4ea49daa8"
 
   url "https://github.com/ArloL/chorito/releases/download/v#{version}/chorito-macos-#{version}.zip"
   name "chorito"
