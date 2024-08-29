@@ -1,6 +1,6 @@
 cask "git-dora-lead-time-calculator" do
-  version "2408.0.114"
-  sha256 "4124b74e0028d1b99665b8a84707fc98280a2057e80a3bccb993d2d141cf75c9"
+  version "2408.0.115"
+  sha256 "d4f4505f6a663a8c1d686b6e0529bcb8032ea3e23663a467cd17cda33ef1cd03"
 
   url "https://github.com/ArloL/git-dora-lead-time-calculator/releases/download/v#{version}/git-dora-lead-time-calculator-macos-#{version}.zip"
   name "git-dora-lead-time-calculator"
