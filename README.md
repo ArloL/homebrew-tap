@@ -15,3 +15,12 @@ Or `brew tap arlol/tap` and then `brew install <formula>`.
 ```
 sh update-tap.sh
 ```
+
+## Quicklinks to update repository secrets
+
+* <https://github.com/ArloL/chorito/settings/secrets/actions/LIVECHECK_PAT>
+* <https://github.com/ArloL/git-dora-lead-time-calculator/settings/secrets/actions/LIVECHECK_PAT>
+* <https://github.com/ArloL/newlinechecker/settings/secrets/actions/LIVECHECK_PAT>
+* <https://github.com/ArloL/wait-for-ports/settings/secrets/actions/LIVECHECK_PAT>
+* <https://github.com/ArloL/menubar-scripts/settings/secrets/actions/LIVECHECK_PAT>
+* <https://github.com/ArloL/rss-to-mail/settings/secrets/actions/LIVECHECK_PAT>
