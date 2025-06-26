@@ -1,0 +1,6 @@
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        Homebrew/actions/setup-homebrew: ref-pin
+        "*": hash-pin
