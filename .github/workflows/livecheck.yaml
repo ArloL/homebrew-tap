@@ -65,7 +65,9 @@ jobs:
     - run: brew readall arlol/tap || true
     - run: brew casks || true
     - run: brew formulae || true
-    - run: brew desc hashicorp/tap/terraform || true
+    - run: brew desc mongodb/brew/mongosh || true
+    - run: brew info mongodb/brew/mongosh || true
+    - run: brew fetch mongodb/brew/mongosh || true
     - run: brew desc arlol/tap/chorito || true
     - run: brew info --cask arlol/tap/chorito || true
     - run: brew fetch --cask arlol/tap/chorito || true
