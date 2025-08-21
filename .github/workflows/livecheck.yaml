@@ -66,6 +66,8 @@ jobs:
     - run: brew formulae || true
     - run: brew info --cask arlol/tap/chorito || true
     - run: brew fetch --cask arlol/tap/chorito || true
+    - run: brew info --cask arlol/tap/newlinechecker || true
+    - run: brew fetch --cask arlol/tap/newlinechecker || true
     - name: Livecheck
       run: |
         sh update-tap.sh
