@@ -5,6 +5,16 @@ set -o nounset
 set -o xtrace
 set -o pipefail
 
+# Cleanup function to terminate the ssh process and its subprocesses
+cleanup() {
+    if [ -n "${TAP_DIR:-}" ]; then
+        rm -rf "${TAP_DIR}"
+    fi
+}
+
+# Trap the EXIT signal to ensure cleanup is executed on script exit
+trap cleanup EXIT
+
 check() {
   JSON=$(brew livecheck --quiet --json --"${1}" "${2}" |
     jq --raw-output '.[]')
@@ -13,7 +23,7 @@ check() {
   sed -i "" "s/${VERSION_CURRENT}/${VERSION_LATEST}/g" "${3}"
   SHA256_CURRENT=$(brew info --json=v2 --"${1}" "${2}" |
     jq --raw-output "${4}")
-  SHA256_LATEST=$(brew fetch --debug --"${1}" "${2}")
+  SHA256_LATEST=$(brew fetch --"${1}" "${2}")
   SHA256_LATEST=$(set +o pipefail && echo "${SHA256_LATEST}" | grep -m 1 "^SHA-256:")
   SHA256_LATEST=${SHA256_LATEST#SHA-256: }
   sed -i "" "s/${SHA256_CURRENT}/${SHA256_LATEST}/g" "${3}"
@@ -21,14 +31,17 @@ check() {
 }
 
 check_cask() {
-  check "cask" "${1}" "./Casks/${1}.rb" ".casks[0].sha256"
+  check "cask" "${TAP_NAME}/tap/${1}" "./Casks/${1}.rb" ".casks[0].sha256"
 }
 
 check_formula() {
-  check "formula" "${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
+  check "formula" "${TAP_NAME}/tap/${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
 
-brew tap-info --installed
+TAPS_DIR="$(brew --repository)/Library/Taps/"
+TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
+TAP_NAME=$(basename "${TAP_DIR}")
+ln -s "$(pwd -P)" "${TAP_DIR}/homebrew-tap"
 
 check_cask chorito
 check_cask git-dora-lead-time-calculator
