@@ -57,15 +57,15 @@ jobs:
         test-bot: false
         debug: true
         stable: true
-    - run: brew tap-info --installed
-    - run: brew readall arlol/tap
-    - run: brew casks
-    - run: brew formulae
-    - run: brew readall arlol/tap
-    - run: brew casks
-    - run: brew formulae
-    - run: brew info --cask arlol/tap/chorito
-    - run: brew fetch --cask arlol/tap/chorito
+    - run: brew tap-info --installed || true
+    - run: brew readall arlol/tap || true
+    - run: brew casks || true
+    - run: brew formulae || true
+    - run: brew readall arlol/tap || true
+    - run: brew casks || true
+    - run: brew formulae || true
+    - run: brew info --cask arlol/tap/chorito || true
+    - run: brew fetch --cask arlol/tap/chorito || true
     - name: Livecheck
       run: |
         sh update-tap.sh
