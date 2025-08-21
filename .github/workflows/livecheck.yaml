@@ -57,9 +57,9 @@ jobs:
         test-bot: false
         debug: true
         stable: true
-    - run: brew desc arlol/tap/chorito
-    - run: brew info arlol/tap/chorito
-    - run: brew fetch arlol/tap/chorito
+    - run: brew desc --debug arlol/tap/chorito
+    - run: brew info --debug arlol/tap/chorito
+    - run: brew fetch --debug arlol/tap/chorito
     - name: Livecheck
       run: |
         sh update-tap.sh
