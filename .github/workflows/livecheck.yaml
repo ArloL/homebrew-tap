@@ -1,6 +1,7 @@
 name: Livecheck
 
 on:
+  push:
   workflow_dispatch:
   repository_dispatch:
     types:
@@ -54,6 +55,17 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@main
       with:
         test-bot: false
+        debug: true
+        stable: true
+    - run: brew tap-info --installed
+    - run: brew readall arlol/tap
+    - run: brew casks
+    - run: brew formulae
+    - run: brew readall arlol/tap
+    - run: brew casks
+    - run: brew formulae
+    - run: brew info --cask arlol/tap/chorito
+    - run: brew fetch --cask arlol/tap/chorito
     - name: Livecheck
       run: |
         sh update-tap.sh
