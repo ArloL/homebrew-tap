@@ -13,7 +13,7 @@ check() {
   sed -i "" "s/${VERSION_CURRENT}/${VERSION_LATEST}/g" "${3}"
   SHA256_CURRENT=$(brew info --json=v2 --"${1}" "${2}" |
     jq --raw-output "${4}")
-  SHA256_LATEST=$(brew fetch --"${1}" "arlol/tap/${2}")
+  SHA256_LATEST=$(brew fetch --debug --"${1}" "${2}")
   SHA256_LATEST=$(set +o pipefail && echo "${SHA256_LATEST}" | grep -m 1 "^SHA-256:")
   SHA256_LATEST=${SHA256_LATEST#SHA-256: }
   sed -i "" "s/${SHA256_CURRENT}/${SHA256_LATEST}/g" "${3}"
