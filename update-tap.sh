@@ -38,7 +38,8 @@ check_formula() {
   check "formula" "${TAP_NAME}/tap/${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
 
-set
+ls -lsa /opt/homebrew/Library/Taps/arlol
+ls -lsa /opt/homebrew/Library/Taps/arlol/homebrew-tap
 
 TAPS_DIR="$(brew --repository)/Library/Taps/"
 TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
