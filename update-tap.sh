@@ -28,6 +28,8 @@ check_formula() {
   check "formula" "${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
 
+brew tap-info --installed
+
 check_cask chorito
 check_cask git-dora-lead-time-calculator
 check_cask newlinechecker
