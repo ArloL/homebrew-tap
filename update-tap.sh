@@ -39,9 +39,9 @@ check_formula() {
 }
 
 brew tap-info --installed
+brew readall arlol/tap
 brew casks
 brew formulae
-brew readall arlol/tap
 brew casks
 brew formulae
 brew info --cask arlol/tap/chorito
