@@ -60,6 +60,7 @@ jobs:
     - run: brew update
     - run: brew update
     - run: brew doctor
+    - run: brew config
     - run: brew desc --debug arlol/tap/chorito
     - run: brew info --debug arlol/tap/chorito
     - run: brew fetch --debug arlol/tap/chorito
