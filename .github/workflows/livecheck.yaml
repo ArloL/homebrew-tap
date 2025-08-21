@@ -65,8 +65,10 @@ jobs:
     - run: brew readall arlol/tap || true
     - run: brew casks || true
     - run: brew formulae || true
+    - run: brew desc --cask arlol/tap/chorito || true
     - run: brew info --cask arlol/tap/chorito || true
     - run: brew fetch --cask arlol/tap/chorito || true
+    - run: brew desc --cask arlol/tap/newlinechecker || true
     - run: brew info --cask arlol/tap/newlinechecker || true
     - run: brew fetch --cask arlol/tap/newlinechecker || true
     - name: Livecheck
