@@ -57,6 +57,7 @@ jobs:
         test-bot: false
         debug: true
         stable: true
+    - run: brew cleanup --prune=all
     - run: brew tap-info --installed || true
     - run: brew readall arlol/tap || true
     - run: brew casks || true
