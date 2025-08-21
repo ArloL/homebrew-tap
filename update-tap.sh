@@ -5,9 +5,6 @@ set -o nounset
 set -o xtrace
 set -o pipefail
 
-brew info --cask arlol/tap/chorito
-brew fetch --cask arlol/tap/chorito
-
 # Cleanup function to terminate the ssh process and its subprocesses
 cleanup() {
     if [ -n "${TAP_DIR:-}" ]; then
@@ -45,6 +42,10 @@ TAPS_DIR="$(brew --repository)/Library/Taps/"
 TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
 TAP_NAME=$(basename "${TAP_DIR}")
 ln -s "$(pwd -P)" "${TAP_DIR}/homebrew-tap"
+
+brew casks
+brew info --cask arlol/tap/chorito
+brew fetch --cask arlol/tap/chorito
 
 check_cask chorito
 check_cask git-dora-lead-time-calculator
