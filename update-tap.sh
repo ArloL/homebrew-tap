@@ -31,23 +31,19 @@ check() {
 }
 
 check_cask() {
-  check "cask" "${TAP_NAME}/tap/${1}" "./Casks/${1}.rb" ".casks[0].sha256"
+  check "cask" "arlol/tap/${1}" "./Casks/${1}.rb" ".casks[0].sha256"
 }
 
 check_formula() {
-  check "formula" "${TAP_NAME}/tap/${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
+  check "formula" "arlol/tap/${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
-
-ls -lsa /opt/homebrew/Library/Taps/arlol
-ls -lsa /opt/homebrew/Library/Taps/arlol/homebrew-tap
-
-TAPS_DIR="$(brew --repository)/Library/Taps/"
-TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
-TAP_NAME=$(basename "${TAP_DIR}")
-ln -s "$(pwd -P)" "${TAP_DIR}/homebrew-tap"
 
 brew tap-info --installed
 brew casks
+brew formulae
+brew readall arlol/tap
+brew casks
+brew formulae
 brew info --cask arlol/tap/chorito
 brew fetch --cask arlol/tap/chorito
 
