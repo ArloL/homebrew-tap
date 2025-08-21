@@ -55,7 +55,7 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@main
       with:
         test-bot: false
-        debug: true
+        debug: false
         stable: true
     - run: brew update
     - run: brew update
