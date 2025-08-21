@@ -5,6 +5,7 @@ set -o nounset
 set -o xtrace
 set -o pipefail
 
+brew info --cask arlol/tap/chorito
 brew fetch --cask arlol/tap/chorito
 
 # Cleanup function to terminate the ssh process and its subprocesses
