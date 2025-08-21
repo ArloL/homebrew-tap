@@ -43,6 +43,7 @@ TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
 TAP_NAME=$(basename "${TAP_DIR}")
 ln -s "$(pwd -P)" "${TAP_DIR}/homebrew-tap"
 
+brew tap-info --installed
 brew casks
 brew info --cask arlol/tap/chorito
 brew fetch --cask arlol/tap/chorito
