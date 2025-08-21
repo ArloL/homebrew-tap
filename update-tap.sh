@@ -38,6 +38,8 @@ check_formula() {
   check "formula" "${TAP_NAME}/tap/${1}" "./Formula/${1}.rb" ".formulae[0].urls.stable.checksum"
 }
 
+ls -lsa "${HOMEBREW_TAP_REPOSITORY}"
+
 TAPS_DIR="$(brew --repository)/Library/Taps/"
 TAP_DIR=$(mktemp --directory --tmpdir="${TAPS_DIR}")
 TAP_NAME=$(basename "${TAP_DIR}")
