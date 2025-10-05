@@ -48,40 +48,36 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Set up Homebrew
-        id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Cache Homebrew Bundler RubyGems
-        id: cache
-        uses: actions/cache@v4.2.4
-        with:
-          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ runner.os }}-rubygems-
-
-      - name: Install Homebrew Bundler RubyGems
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: brew install-bundler-gems
-
+    - name: Set up Homebrew
+      id: set-up-homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+    - name: Cache Homebrew Bundler RubyGems
+      id: cache
+      uses: actions/cache@v4.2.4
+      with:
+        path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+        key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+        restore-keys: ${{ runner.os }}-rubygems-
+    - name: Install Homebrew Bundler RubyGems
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: brew install-bundler-gems
+    - name: Set up git config
       # NOTE: The commit email address should be the canonical no-reply email address
       # used by the `github-actions[bot]` bot user.
       # https://api.github.com/users/github-actions%5Bbot%5D
       # https://github.community/t/github-actions-bot-email-address/17204/6
-      - name: Set up git config
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
+      run: |
+        git config user.name github-actions[bot]
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+    - name: Bump packages
+      env:
+        # NOTE: `GITHUB_TOKEN` is intentionally used even though created PRs does
+        # not trigger GitHub Action workflows and requires manual rebase. Given
+        # that updates are infrequent, the cost of manual rebase is lesser than
+        # rotating tokens.
+        HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # NOTE: The `brew bump` command is used instead of `brew bump-formula-pr`
       # and `brew bump-cask-pr` because it handles fetching the latest version
       # and operates on all formulae/casks within a tap.
-      - name: Bump packages
-        env:
-          # NOTE: `GITHUB_TOKEN` is intentionally used even though created PRs does
-          # not trigger GitHub Action workflows and requires manual rebase. Given
-          # that updates are infrequent, the cost of manual rebase is lesser than
-          # rotating tokens.
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          brew bump --open-pr --no-fork --tap ArloL/tap
+      run: |
+        brew bump --open-pr --no-fork --tap ArloL/tap
