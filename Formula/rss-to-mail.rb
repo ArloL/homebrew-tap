@@ -1,8 +1,8 @@
 class RssToMail < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/rss-to-mail"
-  url "https://github.com/ArloL/rss-to-mail/archive/refs/tags/v2511.0.104.tar.gz"
-  sha256 "61f3a4589ea969addf09c39e0005cb10c9806e0bb3e1d8aa58dd460653eebb3b"
+  url "https://github.com/ArloL/rss-to-mail/archive/refs/tags/v2511.0.105.tar.gz"
+  sha256 "a659eb442f6870832a03a7227d2ed9b1a3ffc0b3eb05eed294c2df56cfdc90f0"
   license "MIT"
   head "https://github.com/ArloL/rss-to-mail.git", branch: "main"
 
