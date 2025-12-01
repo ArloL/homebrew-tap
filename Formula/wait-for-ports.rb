@@ -1,8 +1,8 @@
 class WaitForPorts < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/wait-for-ports"
-  url "https://github.com/ArloL/wait-for-ports/archive/refs/tags/v2512.0.104.tar.gz"
-  sha256 "7839f6ba99d37798bfaa811561b341a3709171600c00e3c854e6fddf31a51e8c"
+  url "https://github.com/ArloL/wait-for-ports/archive/refs/tags/v2512.0.105.tar.gz"
+  sha256 "2ffbc149cd9da6fc605afbbdd42a900cee14532ced25ef42b939514a409b6da2"
   license "MIT"
   head "https://github.com/ArloL/wait-for-ports.git", branch: "main"
 
