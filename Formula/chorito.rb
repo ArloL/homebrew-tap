@@ -1,8 +1,8 @@
 class Chorito < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/chorito"
-  url "https://github.com/ArloL/chorito/archive/refs/tags/v2512.0.109.tar.gz"
-  sha256 "988ddc397c9301ca574299241faa12319f4c6088cedd38b441ffad6d2cc98c45"
+  url "https://github.com/ArloL/chorito/archive/refs/tags/v2512.0.110.tar.gz"
+  sha256 "e9e8032d9689409dd39bd84650452ab2a734f16f6cf9e0f22ab540f4fc972077"
   license "MIT"
   head "https://github.com/ArloL/chorito.git", branch: "main"
 
