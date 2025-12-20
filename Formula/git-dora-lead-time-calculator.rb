@@ -1,8 +1,8 @@
 class GitDoraLeadTimeCalculator < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/git-dora-lead-time-calculator"
-  url "https://github.com/ArloL/git-dora-lead-time-calculator/archive/refs/tags/v2512.0.114.tar.gz"
-  sha256 "0334442c81ba47ce715bef5affd611c4728b602e91798e74c51bdf7666ac6466"
+  url "https://github.com/ArloL/git-dora-lead-time-calculator/archive/refs/tags/v2512.0.121.tar.gz"
+  sha256 "0210473418d8ed1fd093f99808cc5a49848b68c1ec25caaa9d602441bac85d8b"
   license "MIT"
   head "https://github.com/ArloL/git-dora-lead-time-calculator.git", branch: "main"
 
