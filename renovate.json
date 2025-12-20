@@ -8,5 +8,12 @@
   "vulnerabilityAlerts": {
     "schedule": ["at any time"],
     "minimumReleaseAge": "0 days"
-  }
+  },
+  "packageRules": [
+    {
+      "description": "Disable minimum release age checks for formulas",
+      "matchManagers": ["homebrew"],
+      "minimumReleaseAge": "0 days"
+    }
+  ]
 }
