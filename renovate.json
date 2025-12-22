@@ -13,7 +13,8 @@
     {
       "description": "Disable minimum release age checks for formulas",
       "matchManagers": ["homebrew"],
-      "minimumReleaseAge": "0 days"
+      "minimumReleaseAge": "0 days",
+      "schedule": ["at any time"]
     }
   ]
 }
