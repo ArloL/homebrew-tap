@@ -1,8 +1,8 @@
 class MenubarScripts < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/menubar-scripts"
-  url "https://github.com/ArloL/menubar-scripts/archive/refs/tags/v2601.0.102.tar.gz"
-  sha256 "fae245cb149c29efaec5c7b6fe522d389b949aa9ea4fa480127ad6bbfd7c1482"
+  url "https://github.com/ArloL/menubar-scripts/archive/refs/tags/v2601.0.103.tar.gz"
+  sha256 "969c0c20b8f1f952106d148d3c340c1ff8aecc43ae9fec871e193e90d050d66a"
   license "MIT"
   head "https://github.com/ArloL/menubar-scripts.git", branch: "main"
 
