@@ -1,7 +1,4 @@
 rules:
-  dangerous-triggers:
-    ignore:
-    - publish.yaml
   unpinned-uses:
     config:
       policies:
