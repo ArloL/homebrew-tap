@@ -3,4 +3,6 @@ rules:
     config:
       policies:
         Homebrew/actions/setup-homebrew: ref-pin
+        Homebrew/actions/git-user-config: ref-pin
+        Homebrew/actions/git-try-push: ref-pin
         "*": hash-pin
