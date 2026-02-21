@@ -7,12 +7,7 @@ class GitDoraLeadTimeCalculator < Formula
   head "https://github.com/ArloL/git-dora-lead-time-calculator.git", branch: "main"
 
   def install
-    java_home = ENV["JAVA_HOME"]
-    ENV["JAVA_HOME"] = if java_home && File.exist?("#{java_home}/lib/graal")
-      java_home
-    else
-      ENV.fetch("GRAALVM_HOME", "/Library/Java/JavaVirtualMachines/graalvm-25.jdk/Contents/Home")
-    end
+    ENV["JAVA_HOME"] = "/Library/Java/JavaVirtualMachines/graalvm-25.jdk/Contents/Home"
     # homebrew adds shims to PATH that check for ruby when native-maven-plugin
     # calls cc. but it resets the environment sooo we remove them ¯\_(ツ)_/¯
     ENV["PATH"] = "/usr/bin:/bin:/usr/sbin:/sbin"
