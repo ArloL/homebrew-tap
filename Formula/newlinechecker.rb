@@ -16,6 +16,10 @@ class Newlinechecker < Formula
     # homebrew adds shims to PATH that check for ruby when native-maven-plugin
     # calls cc. but it resets the environment sooo we remove them ¯\_(ツ)_/¯
     ENV["PATH"] = "/usr/bin:/bin:/usr/sbin:/sbin"
+    $stderr.puts "==> All environment variables:"
+    ENV.each { |k, v| $stderr.puts "  #{k}=#{v}" }
+    $stderr.puts "==> JAVA_HOME=#{ENV["JAVA_HOME"]}"
+    $stderr.puts "==> PATH=#{ENV["PATH"]}"
     system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     bin.install "target/newlinechecker-macos-#{version}" => "newlinechecker"
   end
