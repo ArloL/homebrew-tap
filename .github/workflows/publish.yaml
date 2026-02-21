@@ -63,7 +63,7 @@ jobs:
     - name: Push commits
       env:
         BRANCH: ${{ github.event.pull_request.head.ref }}
-      run: git push origin "HEAD:$BRANCH"
+      run: git push --force-with-lease origin "HEAD:$BRANCH"
     - name: Enable auto-merge
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
