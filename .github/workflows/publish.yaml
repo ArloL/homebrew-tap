@@ -34,11 +34,11 @@ jobs:
           --tap="$GITHUB_REPOSITORY" \
           "$PULL_REQUEST"
     - name: Push commits
-      uses: Homebrew/actions/git-try-push@main
-      with:
-        branch: main
-    - name: Delete branch
-      if: github.event.pull_request.head.repo.fork == false
       env:
         BRANCH: ${{ github.event.pull_request.head.ref }}
-      run: git push --delete origin "$BRANCH"
+      run: git push origin "HEAD:$BRANCH"
+    - name: Enable auto-merge
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_REQUEST: ${{ github.event.pull_request.number }}
+      run: gh pr merge --auto --merge "$PULL_REQUEST"
