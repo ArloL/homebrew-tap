@@ -7,17 +7,17 @@ on:
 permissions: {}
 jobs:
   test-bot:
-    permissions:
-      actions: read
-      checks: read
-      contents: read
-      pull-requests: read
     strategy:
       matrix:
         os:
         - macos-15-intel
         - macos-26
     runs-on: ${{ matrix.os }}
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      pull-requests: read
     steps:
     - name: Set up Homebrew
       id: set-up-homebrew
@@ -25,8 +25,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: install graalvm
-      run:
-        brew install --cask graalvm-jdk@25
+      run: brew install --cask graalvm-jdk@25
     - name: Cache Homebrew Bundler RubyGems
       uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
       with:
