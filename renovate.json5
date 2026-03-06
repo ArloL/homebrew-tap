@@ -1,0 +1,37 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "addLabels": [
+        "{{manager}}",
+    ],
+    "extends": [
+        "config:recommended",
+    ],
+    "labels": [
+        "dependencies",
+    ],
+    "minimumReleaseAge": "7 days",
+    "packageRules": [
+        {
+            "description": "Disable minimum release age checks for formulas",
+            "matchManagers": [
+                "homebrew",
+            ],
+            "minimumReleaseAge": "0 days",
+            "schedule": [
+                "at any time",
+            ],
+        },
+    ],
+    "schedule": [
+        "on the 20th day of the month",
+    ],
+    "vulnerabilityAlerts": {
+        "addLabels": [
+            "security",
+        ],
+        "minimumReleaseAge": "0 days",
+        "schedule": [
+            "at any time",
+        ],
+    },
+}
