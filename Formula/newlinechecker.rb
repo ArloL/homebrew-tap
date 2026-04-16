@@ -1,8 +1,8 @@
 class Newlinechecker < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/newlinechecker"
-  url "https://github.com/ArloL/newlinechecker/archive/refs/tags/v2604.0.108.tar.gz"
-  sha256 "10d8b0d99d9abf2563cb2fec3928c3a158db85d6b4bb91bf5fac6d7608fb0692"
+  url "https://github.com/ArloL/newlinechecker/archive/refs/tags/v2604.0.109.tar.gz"
+  sha256 "68d3057f33aa878cf27d029fa0e22d66fb2e391621e89049261fe246a5fe3bb2"
   license "MIT"
   head "https://github.com/ArloL/newlinechecker.git", branch: "main"
 
