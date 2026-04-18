@@ -6,8 +6,10 @@ class GitDoraLeadTimeCalculator < Formula
   license "MIT"
   head "https://github.com/ArloL/git-dora-lead-time-calculator.git", branch: "main"
 
+  depends_on "graalvm"
+
   def install
-    ENV["JAVA_HOME"] = "/Library/Java/JavaVirtualMachines/graalvm-25.jdk/Contents/Home"
+    ENV["JAVA_HOME"] = Formula["graalvm"].opt_libexec/"graalvm.jdk/Contents/Home"
     # homebrew adds shims to PATH that check for ruby when native-maven-plugin
     # calls cc. but it resets the environment sooo we remove them ¯\_(ツ)_/¯
     ENV["PATH"] = "/usr/bin:/bin:/usr/sbin:/sbin"
