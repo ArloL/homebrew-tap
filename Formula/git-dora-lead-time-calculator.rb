@@ -10,8 +10,9 @@ class GitDoraLeadTimeCalculator < Formula
 
   def install
     ENV["JAVA_HOME"] = Formula["graalvm"].opt_libexec/"graalvm.jdk/Contents/Home"
-    # homebrew adds shims to PATH that check for ruby when native-maven-plugin
-    # calls cc. but it resets the environment sooo we remove them ¯\_(ツ)_/¯
+    # homebrew adds a cc shim to PATH that checks for ruby
+    # native-maven-plugin calls cc in a way that ruby can't be found
+    # so we remove the shims from PATH
     ENV["PATH"] = "/usr/bin:/bin:/usr/sbin:/sbin"
     system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     bin.install "target/git-dora-lead-time-calculator-macos-#{version}" => "git-dora-lead-time-calculator"
