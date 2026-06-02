@@ -23,14 +23,13 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: install graalvm
-      run: brew install --cask graalvm-jdk@25
     - name: Cache Homebrew Bundler RubyGems
       uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
       with:
         key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
         path: ${{ steps.set-up-homebrew.outputs.gems-path }}
         restore-keys: ${{ matrix.os }}-rubygems-
+    - run: brew trust arlol/tap
     - run: brew test-bot --only-cleanup-before
     - run: brew test-bot --only-setup
     - run: brew test-bot --only-tap-syntax
