@@ -1,8 +1,8 @@
 class Drifty < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/drifty"
-  url "https://github.com/ArloL/drifty/archive/refs/tags/v2606.0.109.tar.gz"
-  sha256 "0bcdb3cbd509f0aa1a9ec172e1e4df39ebd214075009d5e77c43c0e8d024936e"
+  url "https://github.com/ArloL/drifty/archive/refs/tags/v2606.0.111.tar.gz"
+  sha256 "f6c83e468ab0e9dca906d5a66180763ef57ed51ff0d5c471216bb2aa93e76b65"
   license "MIT"
   head "https://github.com/ArloL/drifty.git", branch: "main"
 
