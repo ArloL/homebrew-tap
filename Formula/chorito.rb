@@ -9,7 +9,7 @@ class Chorito < Formula
   depends_on "graalvm"
 
   def install
-    ENV["JAVA_HOME"] = Formula["graalvm"].opt_libexec/"graalvm.jdk/Contents/Home"
+    ENV["JAVA_HOME"] = formula_opt_libexec("graalvm")/"graalvm.jdk/Contents/Home"
     # homebrew adds a cc shim to PATH that checks for ruby
     # native-maven-plugin calls cc in a way that ruby can't be found
     # so we remove the shims from PATH
