@@ -9,7 +9,7 @@ class RssToMail < Formula
   depends_on "openjdk@25"
 
   def install
-    ENV["JAVA_HOME"] = Formula["openjdk@25"].opt_prefix
+    ENV["JAVA_HOME"] = formula_opt_prefix("openjdk@25")
     system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     libexec.install "target/rss-to-mail-#{version}.jar"
     bin.write_jar_script libexec/"rss-to-mail-#{version}.jar", "rss-to-mail"
