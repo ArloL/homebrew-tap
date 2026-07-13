@@ -39,8 +39,8 @@ jobs:
     - name: Fail if a formula failed to build or test
       if: always() && github.event_name == 'pull_request'
       run: |
-        if grep --quiet --extended-regexp 'did not build|did not pass' test-bot-formulae.log; then
-          echo "::error::brew test-bot reported a formula build/test failure"
+        if grep --quiet --fixed-strings '::error::' test-bot-formulae.log; then
+          echo "brew test-bot reported a formula build/test failure"
           exit 1
         fi
     - if: always() && github.event_name == 'pull_request'
