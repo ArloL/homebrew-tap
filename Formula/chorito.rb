@@ -6,15 +6,15 @@ class Chorito < Formula
   license "MIT"
   head "https://github.com/ArloL/chorito.git", branch: "main"
 
-  depends_on "graalvm"
+  depends_on "mise"
 
   def install
-    ENV["JAVA_HOME"] = formula_opt_libexec("graalvm")/"graalvm.jdk/Contents/Home"
     # homebrew adds a cc shim to PATH that checks for ruby
     # native-maven-plugin calls cc in a way that ruby can't be found
     # so we remove the shims from PATH
     ENV["PATH"] = "/usr/bin:/bin:/usr/sbin:/sbin"
-    system "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
+    mise = formula_opt_bin("mise")/"mise"
+    system mise, "exec", "--", "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
     bin.install "target/chorito-macos-#{version}" => "chorito"
   end
 
