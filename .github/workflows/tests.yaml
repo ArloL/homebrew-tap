@@ -29,7 +29,6 @@ jobs:
         key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
         path: ${{ steps.set-up-homebrew.outputs.gems-path }}
         restore-keys: ${{ matrix.os }}-rubygems-
-    - run: brew trust arlol/tap
     - run: brew test-bot --only-cleanup-before
     - run: brew test-bot --only-setup
     - run: brew test-bot --only-tap-syntax
