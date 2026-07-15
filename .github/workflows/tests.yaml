@@ -33,16 +33,7 @@ jobs:
     - run: brew test-bot --only-setup
     - run: brew test-bot --only-tap-syntax
     - if: github.event_name == 'pull_request'
-      run: |
-        set -o pipefail
-        brew test-bot --only-formulae 2>&1 | tee test-bot-formulae.log
-    - name: Fail if a formula failed to build or test
-      if: always() && github.event_name == 'pull_request'
-      run: |
-        if grep --quiet --fixed-strings '::error::' test-bot-formulae.log; then
-          echo "brew test-bot reported a formula build/test failure"
-          exit 1
-        fi
+      run: brew test-bot --only-formulae
     - if: always() && github.event_name == 'pull_request'
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
       with:
@@ -57,6 +48,8 @@ jobs:
     # ourselves if necessary
     if: always()
     runs-on: ubuntu-latest
+    permissions:
+      checks: read
     steps:
     - run: echo "Use this job as the required status check of this workflow"
     - name: Check that all jobs were successful
@@ -64,3 +57,31 @@ jobs:
         RESULTS: ${{ toJSON(needs) }}
       run: |
         echo "$RESULTS" | jq --exit-status 'all(.result == "success")' || exit 1
+    # brew test-bot exits 0 even when a formula fails to build or test, so the
+    # job success check above is not enough. It does emit a failure-level check
+    # annotation for each failed formula, so fail if the dependent test-bot runs
+    # added any.
+    - name: Fail if a dependent run has error annotations
+      if: always()
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO: ${{ github.repository }}
+        # github.sha is the merge commit on pull_request events; the check runs
+        # and their annotations are attached to the PR head commit.
+        SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      run: |
+        found=""
+        while read -r id name; do
+          annotations="$(gh api "repos/$REPO/check-runs/$id/annotations" --paginate \
+            --jq '.[] | select(.annotation_level == "failure") | "\(.path): \(.message)"')"
+          if [ -n "$annotations" ]; then
+            found="${found}"$'\n'"[$name]"$'\n'"$annotations"
+          fi
+        done < <(gh api "repos/$REPO/commits/$SHA/check-runs" --paginate \
+          --jq '.check_runs[] | select(.name | startswith("test-bot")) | "\(.id) \(.name)"')
+        if [ -n "$found" ]; then
+          echo "Error annotations found on dependent test-bot runs:"
+          echo "$found"
+          exit 1
+        fi
+        echo "No error annotations on dependent test-bot runs."
