@@ -57,11 +57,11 @@ jobs:
         RESULTS: ${{ toJSON(needs) }}
       run: |
         echo "$RESULTS" | jq --exit-status 'all(.result == "success")' || exit 1
-    # brew test-bot exits 0 even when a formula fails to build or test, so the
-    # job success check above is not enough. It does emit a failure-level check
-    # annotation for each failed formula, so fail if the dependent test-bot runs
-    # added any.
     - name: Fail if a dependent run has error annotations
+      # brew test-bot exits 0 even when a formula fails to build or test, so the
+      # job success check above is not enough. It does emit a failure-level
+      # check annotation for each failed formula, so fail if the dependent
+      # test-bot runs added any.
       if: always()
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
