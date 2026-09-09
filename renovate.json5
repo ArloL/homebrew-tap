@@ -3,6 +3,34 @@
     "addLabels": [
         "{{manager}}",
     ],
+    "customManagers": [
+        {
+            // Formulas that install a prebuilt binary from a github release
+            // asset. The built-in homebrew manager cannot update these: it only
+            // knows how to rebuild source tarball urls, so it would rewrite the
+            // asset url back to the source tarball. It is disabled for them
+            // below.
+            //
+            // currentValue has to stay the raw tag because
+            // github-release-attachments resolves releases by tag name. That
+            // datasource finds the asset matching the current sha256 and
+            // rehashes the equally named asset of the new release, so the asset
+            // name must not contain the version.
+            //
+            // No autoReplaceStringTemplate on purpose: renovate then swaps
+            // currentValue and currentDigest inside the match and leaves the
+            // asset name alone, which keeps this working for every formula.
+            "customType": "regex",
+            "datasourceTemplate": "github-release-attachments",
+            "managerFilePatterns": [
+                "/^Formula/.+\\.rb$/",
+            ],
+            "matchStrings": [
+                "url \"https://github\\.com/(?<depName>[^/\"]+/[^/\"]+)/releases/download/(?<currentValue>[^/\"]+)/[^\"]+\"\\s+sha256 \"(?<currentDigest>[^\"]+)\"",
+            ],
+            "versioningTemplate": "semver-coerced",
+        },
+    ],
     "extends": [
         "config:recommended",
     ],
@@ -15,11 +43,25 @@
             "description": "Disable minimum release age checks for formulas",
             "matchManagers": [
                 "homebrew",
+                "custom.regex",
             ],
             "minimumReleaseAge": "0 days",
             "schedule": [
                 "at any time",
             ],
+        },
+        {
+            // the homebrew manager uses github-releases for release asset urls
+            // and github-tags for source tarballs, so this only turns it off
+            // for the formulas the custom manager above handles
+            "description": "Let the custom manager handle prebuilt binary formulas",
+            "matchManagers": [
+                "homebrew",
+            ],
+            "matchDatasources": [
+                "github-releases",
+            ],
+            "enabled": false,
         },
     ],
     "schedule": [
