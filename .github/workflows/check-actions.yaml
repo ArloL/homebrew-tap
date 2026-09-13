@@ -1,12 +1,16 @@
 name: Check actions
 
 on:
+  # push is limited to main: pull_request covers every branch that has one, and
+  # a fork's pushes never reach this repository. workflow_dispatch is there for
+  # a branch with no pull request open.
   push:
+    branches:
+    - main
   pull_request:
     branches:
     - main
-    types:
-    - reopened
+  workflow_dispatch:
   schedule:
   - cron: "27 18 5 * *"
 permissions: {}
@@ -64,7 +68,7 @@ jobs:
       with:
         persist-credentials: false
     - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@ae62891fec2bb8e7d6c99fc78c9fec3a63790f8d # v10.0.0
+      uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
     - name: Run zizmor 🌈
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
