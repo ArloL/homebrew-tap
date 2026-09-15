@@ -1,8 +1,8 @@
 class Chorito < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/chorito"
-  url "https://github.com/ArloL/chorito/releases/download/v2609.0.129/chorito-macos"
-  sha256 "da6e5d223f2f7c52ea5a4a0f031e27f7189e24658d264681dd5537ac59487e14"
+  url "https://github.com/ArloL/chorito/releases/download/v2609.0.130/chorito-macos-arm64.tar.gz"
+  sha256 "88ca8698780bd5ec050a77169b38aace49bc3e382bcb59652b7ddd532006727e"
   license "MIT"
 
   head do
@@ -10,6 +10,11 @@ class Chorito < Formula
 
     depends_on "mise" => :build
   end
+
+  # The release ships one macOS archive: GraalVM cannot cross-compile and
+  # GitHub no longer runs Intel macOS runners.
+  depends_on arch: :arm64
+  depends_on :macos
 
   def install
     if build.head?
@@ -21,7 +26,8 @@ class Chorito < Formula
       system mise, "exec", "--", "./mvnw", "--batch-mode", "clean", "package", "-DskipTests", "-Drevision=#{version}"
       bin.install "target/chorito-macos-#{version}" => "chorito"
     else
-      bin.install "chorito-macos" => "chorito"
+      # The archive holds exactly one file, already named chorito.
+      bin.install "chorito"
     end
   end
 
