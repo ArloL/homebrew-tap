@@ -26,7 +26,7 @@ brew style Formula/<name>.rb
 
 There are three distinct formula types:
 
-1. **GraalVM native-image formulas** (chorito, newlinechecker, wait-for-ports, git-dora-lead-time-calculator): Java projects compiled to native binaries via GraalVM. They hardcode `JAVA_HOME` to a GraalVM 25 JDK path and override `PATH` to avoid Homebrew Ruby shims interfering with native-maven-plugin's cc calls. The build uses `./mvnw` (Maven wrapper) and installs a single native binary.
+1. **GraalVM native-image formulas** (chorito, drifty, newlinechecker, wait-for-ports, git-dora-lead-time-calculator): Java projects compiled to native binaries via GraalVM. The release ships one archive per os/arch (`<name>-macos-arm64.tar.gz`), each holding a single executable already named `<name>`, so the default path just unpacks it. Apple silicon is the only macOS build — GraalVM cannot cross-compile and GitHub no longer runs Intel macOS runners — hence `depends_on arch: :arm64` and `depends_on :macos`. Only `--HEAD` builds from source: it runs `./mvnw` under `mise` and overrides `PATH` to keep Homebrew's Ruby shims out of native-maven-plugin's cc calls.
 
 2. **JAR formula** (rss-to-mail): Java project packaged as a JAR, depends on `openjdk@25`. Uses `write_jar_script` to create a launcher. Includes a `service` block for background execution.
 
