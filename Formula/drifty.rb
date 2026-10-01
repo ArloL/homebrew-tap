@@ -1,8 +1,8 @@
 class Drifty < Formula
   desc "Something something darkside"
   homepage "https://github.com/ArloL/drifty"
-  url "https://github.com/ArloL/drifty/releases/download/v2609.0.173/drifty-macos-arm64.tar.gz"
-  sha256 "72b769ac489d5d29ec0fe2b2746c667e46e1e65c12b44f3cc16e22937f319c97"
+  url "https://github.com/ArloL/drifty/releases/download/v2610.0.105/drifty-macos-arm64.tar.gz"
+  sha256 "f877e00dfb5e0e752d1deb3aace03a1f998c4e5aadd8baabe83802dd4c4a50c4"
   license "MIT"
 
   head do
