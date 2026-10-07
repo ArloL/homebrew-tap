@@ -30,6 +30,23 @@
             ],
             "versioningTemplate": "semver-coerced",
         },
+        {
+            // Casks from a github release asset. The version stanza drops the
+            // tag's v prefix, so currentValueTemplate restores the raw tag for
+            // github-release-attachments and autoReplaceStringTemplate strips
+            // it again when writing the update.
+            "customType": "regex",
+            "datasourceTemplate": "github-release-attachments",
+            "managerFilePatterns": [
+                "/^Casks/.+\\.rb$/",
+            ],
+            "matchStrings": [
+                "version \"(?<currentValue>[^\"]+)\"\\n  sha256 \"(?<currentDigest>[^\"]+)\"\\n\\n  url \"https://github\\.com/(?<depName>[^/\"]+/[^/\"]+)/releases/download/v#\\{version\\}/",
+            ],
+            "currentValueTemplate": "v{{{currentValue}}}",
+            "autoReplaceStringTemplate": "version \"{{{replace '^v' '' newValue}}}\"\n  sha256 \"{{{newDigest}}}\"\n\n  url \"https://github.com/{{{depName}}}/releases/download/v#{version}/",
+            "versioningTemplate": "semver-coerced",
+        },
     ],
     "extends": [
         "config:recommended",

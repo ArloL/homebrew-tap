@@ -32,6 +32,10 @@ There are three distinct formula types:
 
 3. **Shell script formula** (menubar-scripts): Simply installs a shell script. Includes a `service` block.
 
+## Casks
+
+`Casks/breezy-app.rb` installs `Breezy.app` from a release zip. The token has an `-app` suffix because homebrew/core already has a `breezy` formula. The app is only ad-hoc signed, so `postflight_steps` strips the quarantine attribute; Homebrew rejects plain `postflight` blocks. Renovate updates casks through a separate custom manager that needs the exact `version`/`sha256`/blank line/`url` layout.
+
 ## Version Updates
 
-Formula versions are updated automatically by Renovate (see `renovate.json`). Each commit updates the `url` tag version and `sha256` hash for a single formula. The version scheme is `YYMM.0.patch` (e.g., `v2602.0.105`).
+Formula versions are updated automatically by Renovate (see `renovate.json5`). Each commit updates the version and `sha256` hash for a single formula or cask. The version scheme is `YYMM.0.patch` (e.g., `v2602.0.105`).

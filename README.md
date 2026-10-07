@@ -6,6 +6,8 @@
 
 Or `brew tap arlol/tap` and then `brew install <formula>`.
 
+Apps install as casks: `brew install --cask arlol/tap/breezy-app`.
+
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
