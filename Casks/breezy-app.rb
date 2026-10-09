@@ -1,6 +1,6 @@
 cask "breezy-app" do
-  version "2610.0.116"
-  sha256 "d30241d1d6030ec0bd48ac60d8e09782cff3d56dc9e51ae492f6b670c80b7b9c"
+  version "2610.0.117"
+  sha256 "3351355fa34fbfb826723a1abfa8286913f55dec292536c372e137265b311a11"
 
   url "https://github.com/ArloL/breezy/releases/download/v#{version}/breezy-macos.zip"
   name "Breezy"
