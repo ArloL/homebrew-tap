@@ -34,7 +34,7 @@ There are three distinct formula types:
 
 ## Casks
 
-`Casks/breezy-app.rb` installs `Breezy.app` from a release zip. The token has an `-app` suffix because homebrew/core already has a `breezy` formula. The app is only ad-hoc signed, so `postflight_steps` strips the quarantine attribute; Homebrew rejects plain `postflight` blocks. Renovate updates casks through a separate custom manager that needs the exact `version`/`sha256`/blank line/`url` layout.
+`Casks/breezy-app.rb` installs `Breezy.app` from a release zip. The token has an `-app` suffix because homebrew/core already has a `breezy` formula. The app is only ad-hoc signed, so `postflight_steps` strips the quarantine attribute; Homebrew rejects plain `postflight` blocks. The app updates itself with Sparkle, hence `auto_updates true`: `brew upgrade` leaves it alone unless `--greedy`. Renovate updates casks through a separate custom manager that needs the exact `version`/`sha256`/blank line/`url` layout.
 
 ## Version Updates
 

@@ -7,6 +7,7 @@ cask "breezy-app" do
   desc "Whiteboard for work thoughts with sticky-note cards and lanes"
   homepage "https://github.com/ArloL/breezy"
 
+  auto_updates true
   depends_on macos: :sequoia
 
   app "Breezy.app"
