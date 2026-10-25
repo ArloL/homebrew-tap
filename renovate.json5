@@ -31,6 +31,8 @@
             "versioningTemplate": "semver-coerced",
         },
         {
+            "autoReplaceStringTemplate": "version \"{{{replace '^v' '' newValue}}}\"\n  sha256 \"{{{newDigest}}}\"\n\n  url \"https://github.com/{{{depName}}}/releases/download/v#{version}/",
+            "currentValueTemplate": "v{{{currentValue}}}",
             // Casks from a github release asset. The version stanza drops the
             // tag's v prefix, so currentValueTemplate restores the raw tag for
             // github-release-attachments and autoReplaceStringTemplate strips
@@ -43,8 +45,6 @@
             "matchStrings": [
                 "version \"(?<currentValue>[^\"]+)\"\\n  sha256 \"(?<currentDigest>[^\"]+)\"\\n\\n  url \"https://github\\.com/(?<depName>[^/\"]+/[^/\"]+)/releases/download/v#\\{version\\}/",
             ],
-            "currentValueTemplate": "v{{{currentValue}}}",
-            "autoReplaceStringTemplate": "version \"{{{replace '^v' '' newValue}}}\"\n  sha256 \"{{{newDigest}}}\"\n\n  url \"https://github.com/{{{depName}}}/releases/download/v#{version}/",
             "versioningTemplate": "semver-coerced",
         },
     ],
@@ -82,8 +82,10 @@
             ],
         },
     ],
+    "prConcurrentLimit": 10,
+    "prHourlyLimit": 5,
     "schedule": [
-        "on the 20th day of the month",
+        "* * 20-23 * *",
     ],
     "vulnerabilityAlerts": {
         "addLabels": [
